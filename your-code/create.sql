@@ -31,10 +31,14 @@ CREATE TABLE IF NOT EXISTS customers (
 );
 
 CREATE TABLE invoices (
-  invoiccustomerse_number VARCHAR(25), 
-  invoice_date DATE, 
-  invoice_amount FLOAT, 
-  staffid VARCHAR(25) NOT NULL,
-  customerid VARCHAR(25) NOT NULL,
-  vin INT 
-);
+	id INT PRIMARY KEY auto_increment,
+	invoiccustomerse_number VARCHAR(25), 
+    invoice_date DATE, 
+    invoice_amount FLOAT, 
+    staffid VARCHAR(25) NOT NULL,
+    customerid VARCHAR(25) NOT NULL,
+    vin INT,
+    FOREIGN KEY (vin) REFERENCES cars(vin),
+	FOREIGN KEY (customerid) REFERENCES customeers(customerid),
+	FOREIGN KEY (staffid) REFERENCES salespeople(staffid)
+	);
